@@ -8,13 +8,13 @@ It is the late 90's - two big problems were happening for Microsoft.
 ## Parts of .NET
 
 1. CLR (Common Language Runtime)
-    - .NET applications need a runtime. Not all programming languages do.
+   - .NET applications need a runtime. Not all programming languages do.
 2. CTS (Common Type System)
-    - All .NET applications have two data types.
-        - Value Types
-        - Reference Types
+   - All .NET applications have two data types.
+     - Value Types
+     - Reference Types
 3. CIL (Common Intermediate Language)
-    - Like Java ByteCode
-    - What .NET applications compile "to"
-    - Contained in an *Assembly*
-        - An Assembly is a wad of complied .NET code and Metadata about what types are in that assembly.
+   - Like Java ByteCode
+   - What .NET applications compile "to"
+   - Contained in an _Assembly_
+     - An Assembly is a wad of complied .NET code and Metadata about what types are in that assembly.
