@@ -21,4 +21,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\ITUStudent\intro-feb-2023\CSharpSyntaxSolution\CSharpSyntax\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\ITUStudent\intro-feb-2023\CSharpSyntaxSolution\CSharpSyntax\.editorconfig" />
+  </ItemGroup>
+
 </Project>

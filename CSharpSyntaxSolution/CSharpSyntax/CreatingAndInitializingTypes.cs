@@ -2,6 +2,8 @@
 
 public class CreatingAndInitializingTypes
 {
+    string thingy = "Birds";
+
     [Fact]
     public void UsingLiteralsToCreateInstancesOfTypes()
     {
@@ -25,8 +27,31 @@ public class CreatingAndInitializingTypes
     {
         //for local variables only, and you must init the variable
         var myAge = 21;
+
         var myName = "Jose";
+
         var favFood = new Taco();
+
+        var myPay = 25.23M;
+
+        Taco lunch = new();
+        Assert.IsType<Taco>(lunch);
+
+    }
+
+    [Fact]
+    public void CurlyBracesCreateScopes()
+    {
+        Assert.Equal("Birds", thingy);
+        var message = "";
+
+        var age = 22;
+        if (age >= 21)
+        {
+            message = "old enough";
+        }
+
+        Assert.Equal(message, "old enough")
     }
 }
 
