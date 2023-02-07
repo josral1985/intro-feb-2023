@@ -5,6 +5,9 @@ var currentTime = DateTimeOffset.Now;
 
 
 //Iter 1
+/*
+ making sure the input are correct
+ */
 while (true)
 {
     Console.WriteLine("How long is the break: ");
@@ -33,15 +36,15 @@ while (true)
     }
 }
 
-//getting current Time
-//Console.WriteLine("CurrentTime: " + currentTime);
 
-Console.WriteLine("Start of break is " + currentTime.Hour + ":" + currentTime.Minute + " and your break is " + breakMinutesAsTimeSpan.Minutes + " minutes long");
-Console.WriteLine("The song is " + songLengthAsTimeSpan.Minutes + " minutes and " + songLengthAsTimeSpan.Seconds + " seconds long");
+Console.WriteLine($"Start of break is {currentTime:t}");
+Console.WriteLine($"Break Length: {breakMinutesAsTimeSpan.TotalMinutes} minutes");
+
 
 var endOfBreak = currentTime.AddMinutes(breakMinutesAsTimeSpan.TotalMinutes);
-Console.WriteLine("End of Break: " + endOfBreak.Hour + ":" + endOfBreak.Minute + ":" + endOfBreak.Second);
+Console.WriteLine($"Break ends At: {endOfBreak:t}");
 
-var startSong = (endOfBreak - songLengthAsTimeSpan) - currentTime;
 
-Console.WriteLine("start the song in: " + startSong.Minutes + " minutes and " + startSong.Seconds + " second(s)");
+var startSong = endOfBreak - songLengthAsTimeSpan;
+Console.WriteLine($"Start Song at: {startSong:T}");
+
