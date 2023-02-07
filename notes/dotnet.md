@@ -9,7 +9,7 @@ Some notable early inspirations in .NET:
 - Managed Runtime - uses a garbage collection algorithm.
 - ASP.NET WebForms - for building graphical user interfaces that run on the server side with client-side interactivity in the form of post-backs.
 - ASP.NET Web Services - (ASMX) - A convenient way to create cross-platform APIs using SOAP based messaging, originally across HTTP.
-
+some changes.
 ## Components
 
 - CLR - The Common Language Runtime. The managed environment on which .NET code runs. Targeted originally only the Windows operating system.
