@@ -4,6 +4,7 @@ services:
     volumes:
       - db-dev-data:/var/lib/postgressql/data
     ports:
+      # External : Internal
       - 5432:5432
     environment:
       - POSTGRES_PASSWORD=TokyoJoe138!
