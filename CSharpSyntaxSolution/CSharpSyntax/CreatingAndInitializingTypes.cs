@@ -51,7 +51,7 @@ public class CreatingAndInitializingTypes
             message = "old enough";
         }
 
-        Assert.Equal(message, "old enough")
+        Assert.Equal(message, "old enough");
     }
 }
 
