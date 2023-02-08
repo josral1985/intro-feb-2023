@@ -55,8 +55,9 @@ public class MakingWithdrawals
     [Fact]
     public void OverdraftThrowsException()
     {
-        Assert.Throws<AccountOverdraftException>(() => _account.Withdraw(_openingBalance + 0.1M));
-
+        Assert.Throws<AccountOverdraftException>(() =>
+        _account.Withdraw(_openingBalance + 0.1M)
+        );
     }
 
     [Fact]
