@@ -1,13 +1,10 @@
 ﻿TimeSpan breakMinutesAsTimeSpan, songLengthAsTimeSpan;
 
-//getting current time
-var currentTime = DateTimeOffset.Now;
-
-
 //Iter 1
 /*
  making sure the input are correct
  */
+
 while (true)
 {
     Console.WriteLine("How long is the break: ");
@@ -36,15 +33,22 @@ while (true)
     }
 }
 
+Console.Clear();
+var currentTime = DateTimeOffset.Now;
+while (true)
+{
+    //getting current time
+    var endOfBreak = currentTime.AddMinutes(breakMinutesAsTimeSpan.TotalMinutes);
+    var startSong = endOfBreak - songLengthAsTimeSpan;
 
-Console.WriteLine($"Start of break is {currentTime:t}");
-Console.WriteLine($"Break Length: {breakMinutesAsTimeSpan.TotalMinutes} minutes");
+    var minsRemaining = (endOfBreak - DateTimeOffset.Now);
 
+    Console.WriteLine($"Your break will end in {minsRemaining:t}");
 
-var endOfBreak = currentTime.AddMinutes(breakMinutesAsTimeSpan.TotalMinutes);
-Console.WriteLine($"Break ends At: {endOfBreak:t}");
+    if (DateTimeOffset.Now >= endOfBreak) break;
 
+    Thread.Sleep(100);
+    Console.Clear();
+}
 
-var startSong = endOfBreak - songLengthAsTimeSpan;
-Console.WriteLine($"Start Song at: {startSong:T}");
-
+Console.WriteLine($"Break Over!");
