@@ -1,0 +1,4 @@
+{
+  "githubPullRequests.ignoredPullRequestBranches": ["master"],
+  "dotnet-test-explorer.testProjectPath": "**/*.sln"
+}
