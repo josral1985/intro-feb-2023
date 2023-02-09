@@ -4,12 +4,16 @@ public class GoldCustomersGetBonusOneDeposits
     [Fact]
     public void BonusAppliedToDeposit()
     {
-        var account = new BankAccount();
+        // Given
+        var account = new BankAccount(new DummyBonusCalculator());
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
 
-        account.Deposit(amountToDeposit);
+        // When
+        account.Deposit(amountToDeposit); // <--- System  Under Test
 
+
+        // Then
         Assert.Equal(openingBalance + amountToDeposit + 10M, account.GetBalance());
     }
 }
