@@ -8,7 +8,7 @@ public class MakingWithdrawals
 
     public MakingWithdrawals()
     {
-        _account = new BankAccount(new DummyBonusCalculator());
+        _account = new BankAccount(new Mock<ICanCalculateAccountBonuses>().Object);
         _openingBalance = _account.GetBalance();
     }
 

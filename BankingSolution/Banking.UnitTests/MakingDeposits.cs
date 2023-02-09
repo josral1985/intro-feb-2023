@@ -5,7 +5,7 @@ public class MakingDeposits
     public void DepositingMoneyIncreasesTheBalance()
     {
         //Given
-        var account = new BankAccount(new DummyBonusCalculator());
+        var account = new BankAccount(new Mock<ICanCalculateAccountBonuses>().Object);
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
 
