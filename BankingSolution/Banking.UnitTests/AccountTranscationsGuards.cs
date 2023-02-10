@@ -11,7 +11,7 @@ public class AccountTranscationsGuards
         var account = new BankAccount(stubbedBonusCalculator.Object);
         var openingBalance = account.GetBalance();
 
-        account.Deposit(-1000);
+        //account.Deposit(-1000);
 
         Assert.Throws<NoNegativeNumbersAllowedException>(() => account.Deposit(-1000));
         Assert.Equal(openingBalance, account.GetBalance());
