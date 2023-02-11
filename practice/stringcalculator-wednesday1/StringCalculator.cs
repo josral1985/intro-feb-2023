@@ -6,7 +6,9 @@ public class StringCalculator
 
     public int Add(string numbers)
     {
-        var delimeters = new List<char> { ',', '\n'};
+        var negativeNumbers = new List<int> { };
+
+        var delimiters = new List<char> { ',', '\n' };
 
         if (numbers == "")
         {
@@ -16,18 +18,38 @@ public class StringCalculator
         if (numbers.StartsWith("//"))
         {
             var delim = numbers[2];
-            delimeters.Add(delim);
+            delimiters.Add(delim);
             numbers = numbers.Substring(4);
         }
 
         var total = 0;
-        var pieces = numbers.Split(delimeters.ToArray());
+        var pieces = numbers.Split(delimiters.ToArray());
 
-        foreach(var piece in pieces)
+        foreach (var piece in pieces)
         {
+            if (piece.StartsWith("-"))
+            {
+                negativeNumbers.Add(int.Parse(piece));
+            }
             total += int.Parse(piece);
         }
 
-        return total;
+        if (negativeNumbers.Count <= 0) return total;
+
+        var message = "Negatives not allowed ";
+        for (var i = 0; i < negativeNumbers.Count; i++)
+        {
+            if (i == negativeNumbers.Count - 1)
+            {
+                message += negativeNumbers[i];
+            }
+            else
+            {
+                message += negativeNumbers[i] + ", ";
+            }
+        }
+
+        throw new NoNegativeNumbersException(message);
+
     }
 }
