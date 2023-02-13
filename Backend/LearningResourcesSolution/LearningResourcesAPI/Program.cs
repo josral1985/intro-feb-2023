@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers(); // cerated the route table
 
 // above this is configuration
 app.Run(); //Blocking call - the api is the up and running

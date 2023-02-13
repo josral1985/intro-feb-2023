@@ -18,10 +18,11 @@ public class CreatingAndInitializingTypes
         int myAge = 37;
         bool isLegalAgeToDrink = myAge >= 21;
 
+        Taco food = new Taco();
+
         Assert.Equal("Jose", myName);
         Assert.Equal(37, myAge);
-
-        Taco food = new Taco();
+        Assert.Equal("Birds", thingy);
     }
 
     [Fact]
@@ -30,6 +31,7 @@ public class CreatingAndInitializingTypes
         //for local variables only, and you must init the variable
         var myAge = 21;
 
+        var r = new TransitoryPolicyCommuterRecord();
         var myName = "Jose";
 
         var favFood = new Taco();
@@ -67,6 +69,8 @@ public class CreatingAndInitializingTypes
         }
 
         Assert.True(message.ToString().StartsWith("1, 2, 3, 4"));
+
+        var myName = "Joe";
     }
 
     [Fact]

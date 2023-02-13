@@ -5,7 +5,7 @@ public class SystemTime : ISystemTime
     public DateTimeOffset GetCurrent() => DateTimeOffset.Now;
 }
 
-public interface ISystemTime
+public interface ISystemTime //job description
 {
     DateTimeOffset GetCurrent();
 }
