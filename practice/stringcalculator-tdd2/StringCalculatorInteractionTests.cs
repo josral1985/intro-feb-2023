@@ -16,9 +16,9 @@ namespace StringCalculator
             calculator.Add(numbers);
 
             //verifying that that the method was called. not testing Add but the logger.
-            mockedLogger.Verify(logger => logger.Write(expected), Times.Never);
+            mockedLogger.Verify(logger => logger.Write(expected), Times.Once);
             mockedWebService.Verify(ws => ws.NotifyOfFailedLogging(It.IsAny<string>()), Times.Never);
-        }   
+        }
 
 
         [Theory]

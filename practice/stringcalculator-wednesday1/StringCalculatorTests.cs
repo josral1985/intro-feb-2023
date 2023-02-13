@@ -66,4 +66,19 @@ public class StringCalculatorTests
         var result = _calculator.Add(numbers);
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void NegativeNotAllowed()
+    {
+        Assert.Throws<NoNegativeNumbersException>(() =>
+            _calculator.Add("-1"));
+    }
+
+    [Fact]
+    public void MultipleNegativeNumbersNotAllowed()
+    {
+        Assert.Throws<NoNegativeNumbersException>(() =>
+        _calculator.Add("-1,2,3,-4"));
+    }
+
 }
