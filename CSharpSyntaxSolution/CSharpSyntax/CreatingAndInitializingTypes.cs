@@ -84,7 +84,7 @@ public class CreatingAndInitializingTypes
     [Fact]
     public void DoingConversionOnTypes()
     {
-        string myPay = "10000.83Tacos";
+        string myPay = "10000.83";
 
         //try
         //{
@@ -105,7 +105,10 @@ public class CreatingAndInitializingTypes
             Assert.True(false);
         }
 
-
+        var birthdate = DateTime.Parse("04/11/1985");
+        Assert.Equal(4, birthdate.Month);
+        Assert.Equal(11, birthdate.Day);
+        Assert.Equal(1985, birthdate.Year);
 
     }
 }
