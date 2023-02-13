@@ -67,18 +67,12 @@ public class StringCalculatorTests
         Assert.Equal(expected, result);
     }
 
-    [Fact]
-    public void NegativeNotAllowed()
+    [Theory]
+    [InlineData("-1")]
+    [InlineData("-1,2,3,-4")]
+    public void NegativeNotAllowed(string numbers)
     {
         Assert.Throws<NoNegativeNumbersException>(() =>
-            _calculator.Add("-1"));
+            _calculator.Add(numbers));
     }
-
-    [Fact]
-    public void MultipleNegativeNumbersNotAllowed()
-    {
-        Assert.Throws<NoNegativeNumbersException>(() =>
-        _calculator.Add("-1,2,3,-4"));
-    }
-
 }
