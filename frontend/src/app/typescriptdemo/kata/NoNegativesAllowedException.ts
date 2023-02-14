@@ -1,8 +1,8 @@
-export class NoNegativesAllowedExecption extends Error {
+export class NoNegativesAllowedException extends Error {
   __proto__ = Error;
 
   constructor(msg: string) {
     super(msg);
-    Object.setPrototypeOf(this, NoNegativesAllowedExecption.prototype);
+    Object.setPrototypeOf(this, NoNegativesAllowedException.prototype);
   }
 }
