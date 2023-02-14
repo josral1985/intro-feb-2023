@@ -1,7 +1,7 @@
 import { StringCalculator } from './string-calculator';
 
 describe('String Calculator', () => {
-  it('Empty String Returns Zero', () => {
+  it('1.0 Empty String Returns Zero', () => {
     const calculator = new StringCalculator();
 
     let result = calculator.add('');
@@ -9,7 +9,7 @@ describe('String Calculator', () => {
     expect(result).toEqual(0);
   });
 
-  describe('Single Number', () => {
+  describe('1.1 Single Number', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {
@@ -32,7 +32,7 @@ describe('String Calculator', () => {
     });
   });
 
-  describe('2 Numbers', () => {
+  describe('1.2 Two Numbers', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {
@@ -55,7 +55,7 @@ describe('String Calculator', () => {
     });
   });
 
-  describe('Multiple Numbers', () => {
+  describe('2.0 Multiple Numbers', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {
@@ -68,7 +68,7 @@ describe('String Calculator', () => {
     });
   });
 
-  describe('New Line As Delim', () => {
+  describe('3.0 New Line As Delim', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {
@@ -86,7 +86,7 @@ describe('String Calculator', () => {
     });
   });
 
-  describe('Different Delimiters', () => {
+  describe('4.0 Different Delimiters', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {

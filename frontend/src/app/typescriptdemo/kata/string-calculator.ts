@@ -2,11 +2,11 @@ export class StringCalculator {
   add(numbers: string) {
     if (numbers === '') return 0;
 
-    var delim; //regex! this is pretty cool!
+    var delim;
 
     if (numbers.startsWith('//')) {
       var newDelim = numbers[2] + '|,|\n';
-      delim = new RegExp(newDelim);
+      delim = new RegExp(newDelim); //regex! this is pretty cool!
       numbers = numbers.substring(4);
     } else {
       delim = /,|\n/;
