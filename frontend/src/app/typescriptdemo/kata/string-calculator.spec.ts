@@ -9,7 +9,7 @@ describe('String Calculator', () => {
     expect(result).toEqual(0);
   });
 
-  describe('Single Digits', () => {
+  describe('Single Number', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {
@@ -32,7 +32,7 @@ describe('String Calculator', () => {
     });
   });
 
-  describe('Double Digits', () => {
+  describe('2 Numbers', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {
@@ -52,6 +52,55 @@ describe('String Calculator', () => {
     it('Third', () => {
       const result = calculator.add('10,20');
       expect(result).toEqual(30);
+    });
+  });
+
+  describe('Multiple Numbers', () => {
+    let calculator: StringCalculator;
+
+    beforeEach(() => {
+      calculator = new StringCalculator();
+    });
+
+    it('First', () => {
+      const result = calculator.add('1,2,3,4,5,6,7,8,9');
+      expect(result).toEqual(45);
+    });
+  });
+
+  describe('New Line As Delim', () => {
+    let calculator: StringCalculator;
+
+    beforeEach(() => {
+      calculator = new StringCalculator();
+    });
+
+    it('First', () => {
+      const result = calculator.add('1\n2');
+      expect(result).toEqual(3);
+    });
+
+    it('Second', () => {
+      const result = calculator.add('1\n2,3');
+      expect(result).toEqual(6);
+    });
+  });
+
+  describe('Different Delimiters', () => {
+    let calculator: StringCalculator;
+
+    beforeEach(() => {
+      calculator = new StringCalculator();
+    });
+
+    it('First', () => {
+      const result = calculator.add('//;\n1;2');
+      expect(result).toEqual(3);
+    });
+
+    it('Use the comma and new line + new delim', () => {
+      const result = calculator.add('//;\n1;2,3,4;5');
+      expect(result).toEqual(15);
     });
   });
 });
