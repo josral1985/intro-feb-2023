@@ -1,12 +1,15 @@
+import { NoNegativesAllowedExecption } from './NoNegativesAllowedException';
 import { StringCalculator } from './string-calculator';
 
 describe('String Calculator', () => {
-  it('1.0 Empty String Returns Zero', () => {
-    const calculator = new StringCalculator();
+  describe('1.0 Empty String Returns Zero', () => {
+    it('First Example', () => {
+      const calculator = new StringCalculator();
 
-    let result = calculator.add('');
+      let result = calculator.add('');
 
-    expect(result).toEqual(0);
+      expect(result).toEqual(0);
+    });
   });
 
   describe('1.1 Single Number', () => {
@@ -99,8 +102,24 @@ describe('String Calculator', () => {
     });
 
     it('Use the comma and new line + new delim', () => {
-      const result = calculator.add('//;\n1;2,3,4;5');
+      const result = calculator.add('//;\n1;2;3,4\n5');
       expect(result).toEqual(15);
+    });
+  });
+
+  describe('5.0 No Negatives Allowed Exception', () => {
+    let calculator: StringCalculator;
+
+    beforeEach(() => {
+      calculator = new StringCalculator();
+    });
+
+    it('First', () => {
+      const result = calculator.add('1,-2');
+
+      expect(result).toThrow(
+        new NoNegativesAllowedExecption('No Negatives Allowed -2')
+      );
     });
   });
 });
