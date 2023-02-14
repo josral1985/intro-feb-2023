@@ -13,7 +13,7 @@ public class StatusController : ControllerBase
 
     //GET /status
     [HttpGet("/status")]
-    public ActionResult GetTheStatus()
+    public ActionResult<GetStatusResponse> GetTheStatus()
     {
         var contact = _systemTime.GetCurrent().Hour < 16 ? "555-555-5555" : "bob@aol.com";
         var res = new GetStatusResponse("All's Good", contact);

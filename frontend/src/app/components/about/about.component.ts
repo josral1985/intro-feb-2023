@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { compileNgModule } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
+import { StatusResponseModel } from 'src/app/models/status.models';
+import { StatusDataService } from 'src/app/services/status-data.service';
 
 @Component({
   selector: 'app-about',
@@ -10,6 +12,7 @@ import { Observable } from 'rxjs';
 export class AboutComponent {
   //the ! operator quiets the "nullable" error
   responseFromServer$!: Observable<StatusResponseModel>;
+  hasError = false;
 
   /**
    * Read more about Observables:
@@ -17,19 +20,18 @@ export class AboutComponent {
    *
    */
 
-  constructor(private client: HttpClient) {}
+  constructor(private service: StatusDataService) {}
 
   getStatus() {
     // const result = this.client.get('http://localhost:1337/status');
     // console.log(result);
     // result.subscribe((r) => console.log(r));
-    this.responseFromServer$ = this.client.get<StatusResponseModel>(
-      'http://localhost:1337/status'
+    this.responseFromServer$ = this.service.getStatus().pipe(
+      tap(() => (this.hasError = false)),
+      catchError(() => {
+        this.hasError = true;
+        return of({ message: 'unavailable', contact: 'unavailable' });
+      })
     );
   }
 }
-
-type StatusResponseModel = {
-  message: string;
-  contact: string;
-};

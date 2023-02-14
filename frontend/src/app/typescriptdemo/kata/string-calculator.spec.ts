@@ -117,9 +117,9 @@ describe('String Calculator', () => {
     it('First', () => {
       const result = calculator.add('1,-2');
 
-      expect(result).toThrow(
-        new NoNegativesAllowedExecption('No Negatives Allowed -2')
-      );
+      expect(() => {
+        calculator.add('1,-2');
+      }).toThrow(new NoNegativesAllowedExecption('No Negatives Allowed -2'));
     });
   });
 });

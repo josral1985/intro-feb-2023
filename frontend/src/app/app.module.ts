@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AboutComponent } from './components/about/about.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StatusDataService } from './services/status-data.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule, // -> has a service it provides call the HttpClient
   ],
-  providers: [],
+  providers: [StatusDataService], //Services
   bootstrap: [AppComponent],
 })
 export class AppModule {}
