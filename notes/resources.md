@@ -2,6 +2,13 @@
 
 ## Training Resources
 
+### Angular Stuff
+
+Jeff's Youtube videos:
+
+- Counter as a Kata: [Intro to Redux 1 Basic State with @NGRX/Store - YouTube](https://www.youtube.com/watch?v=krcq6-KefFs&list=PLTEnldLBlMMxLmS7CtpAl_BXtAPi5K5Rc)
+- Counter with Angular 15 Standalone Components (advanced?) - [Youtube](https://www.youtube.com/playlist?list=PLTvAXfqXEOXPVI_lBehWWS4pcxy4swZbo)
+
 ### C# Stuff
 
 [Nick Chapsas](https://www.youtube.com/@nickchapsas) - Great stuff - remind yourself to verify what is good for applications developers, vs. systems/library programming.
