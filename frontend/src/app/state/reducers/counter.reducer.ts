@@ -1,7 +1,11 @@
 // tell TS about it
 
 import { createReducer, on } from '@ngrx/store';
-import { CountByValues, counterEvents } from '../actions/counter.action';
+import {
+  CountByValues,
+  counterDocuments,
+  counterEvents,
+} from '../actions/counter.action';
 
 export interface CounterState {
   current: number;
@@ -33,5 +37,6 @@ export const reducer = createReducer(
   on(counterEvents.countBySet, (current, amount) => ({
     ...current,
     by: amount.by,
-  }))
+  })),
+  on(counterDocuments.counter, (s, a) => a.payload)
 );
