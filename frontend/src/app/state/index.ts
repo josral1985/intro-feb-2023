@@ -30,3 +30,8 @@ export const selectCounterCurrent = createSelector(
   selectCounterFeature,
   (f) => f.current
 );
+
+export const selectCountCountingBy = createSelector(
+  selectCounterFeature,
+  (f) => f.by
+);

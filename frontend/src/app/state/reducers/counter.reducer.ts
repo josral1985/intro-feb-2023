@@ -1,16 +1,18 @@
 // tell TS about it
 
 import { createReducer, on } from '@ngrx/store';
-import { counterEvents } from '../actions/counter.action';
+import { CountByValues, counterEvents } from '../actions/counter.action';
 
 export interface CounterState {
   current: number;
+  by: CountByValues;
 }
 
 // what should this have when the app starts up?
 
 const initialState: CounterState = {
   current: 0,
+  by: 1,
 };
 
 //write a function that is responsive for this branch of the application state
@@ -21,11 +23,15 @@ export const reducer = createReducer(
   initialState,
   on(counterEvents.countIncremented, (currentState) => ({
     ...currentState,
-    current: currentState.current + 1,
+    current: currentState.current + currentState.by,
   })),
   on(counterEvents.countDecremented, (currentState) => ({
     ...currentState,
-    current: currentState.current - 1,
+    current: currentState.current - currentState.by,
   })),
-  on(counterEvents.countReset, () => initialState)
+  on(counterEvents.countReset, (current) => ({ ...current, current: 0 })),
+  on(counterEvents.countBySet, (current, amount) => ({
+    ...current,
+    by: amount.by,
+  }))
 );
