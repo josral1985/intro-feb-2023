@@ -1,4 +1,4 @@
-import { NoNegativesAllowedExecption } from './NoNegativesAllowedException';
+import { NoNegativesAllowedException } from './NoNegativesAllowedException';
 import { StringCalculator } from './string-calculator';
 
 describe('String Calculator', () => {
@@ -65,25 +65,25 @@ describe('String Calculator', () => {
       calculator = new StringCalculator();
     });
 
-    it('First', () => {
+    it('Adds an Arbitrary Amount of Numbers', () => {
       const result = calculator.add('1,2,3,4,5,6,7,8,9');
       expect(result).toEqual(45);
     });
   });
 
-  describe('3.0 New Line As Delim', () => {
+  describe('3.0 New Line As Delimiter', () => {
     let calculator: StringCalculator;
 
     beforeEach(() => {
       calculator = new StringCalculator();
     });
 
-    it('First', () => {
+    it('Changed Delimiters to New Line', () => {
       const result = calculator.add('1\n2');
       expect(result).toEqual(3);
     });
 
-    it('Second', () => {
+    it('New Line and Comma are the Delimiters', () => {
       const result = calculator.add('1\n2,3');
       expect(result).toEqual(6);
     });
@@ -96,12 +96,12 @@ describe('String Calculator', () => {
       calculator = new StringCalculator();
     });
 
-    it('First', () => {
+    it('New Arbitrary Delimiter is Applied', () => {
       const result = calculator.add('//;\n1;2');
       expect(result).toEqual(3);
     });
 
-    it('Use the comma and new line + new delim', () => {
+    it('New Arbitrary Delimiter + Default are Applied', () => {
       const result = calculator.add('//;\n1;2;3,4\n5');
       expect(result).toEqual(15);
     });
@@ -114,12 +114,18 @@ describe('String Calculator', () => {
       calculator = new StringCalculator();
     });
 
-    it('First', () => {
-      const result = calculator.add('1,-2');
-
+    it('Throws Exception with message and single negative number', () => {
       expect(() => {
         calculator.add('1,-2');
-      }).toThrow(new NoNegativesAllowedExecption('No Negatives Allowed -2'));
+      }).toThrow(new NoNegativesAllowedException('No Negatives Allowed -2'));
+    });
+
+    it('Throws Exception with message and all negative numbers', () => {
+      expect(() => {
+        calculator.add('//;\n1,2,3;-4\n6,-5');
+      }).toThrow(
+        new NoNegativesAllowedException('No Negatives Allowed -4, -5')
+      );
     });
   });
 });
