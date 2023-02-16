@@ -7,6 +7,8 @@ import { ListComponent } from './components/list/list.component';
 import { NewComponent } from './components/new/new.component';
 import { StoreModule } from '@ngrx/store';
 import { featureName, reducers } from './state';
+import { EffectsModule } from '@ngrx/effects';
+import { ItemsEffects } from './state/effects/items.effects';
 
 const routes: Routes = [
   {
@@ -44,6 +46,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(featureName, reducers),
+    EffectsModule.forFeature([ItemsEffects]),
   ],
 })
 export class LearningResourcesModule {}
