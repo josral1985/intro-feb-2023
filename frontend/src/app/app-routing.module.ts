@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -23,6 +23,13 @@ const routes: Routes = [
     component: CounterComponent,
   },
   {
+    path: 'learning',
+    loadChildren: () =>
+      import('./learning-resources/learning-resources.module').then(
+        (m) => m.LearningResourcesModule
+      ),
+  },
+  {
     //catch all route - matches anything; should be the last object
     path: '**',
     redirectTo: 'dashboard',
@@ -30,7 +37,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
