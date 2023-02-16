@@ -11,9 +11,10 @@ export interface ItemEntity {
 
 export type ItemType = 'Book' | 'Video' | 'Blog' | 'Tutorial' | 'Other';
 
-export interface ItemState extends EntityState<ItemEntity> {}
+export interface ItemState extends EntityState<ItemEntity> {} //extends the EntityState interface, alt + f12 for implementation
 
-export const adapter = createEntityAdapter<ItemEntity>(); //creates the output
+export const adapter = createEntityAdapter<ItemEntity>(); //creates the output; using the ngrx entity helper function
+// since the data from API is an array/not as "simple" as the counter, where we just created an interface
 
 const initialState = adapter.getInitialState(); //initial state
 
