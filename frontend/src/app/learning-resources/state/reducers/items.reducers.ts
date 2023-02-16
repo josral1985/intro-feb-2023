@@ -20,5 +20,6 @@ const initialState = adapter.getInitialState(); //initial state
 
 export const reducer = createReducer(
   initialState,
-  on(itemsDocuments.items, (s, a) => adapter.setAll(a.payload, s))
+  on(itemsDocuments.items, (s, a) => adapter.setAll(a.payload, s)),
+  on(itemsDocuments.item, (s, a) => adapter.addOne(a.payload, s))
 );

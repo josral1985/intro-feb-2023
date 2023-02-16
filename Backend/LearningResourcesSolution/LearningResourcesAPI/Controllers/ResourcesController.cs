@@ -28,5 +28,24 @@ namespace LearningResourcesAPI.Controllers
 
             return Ok(response);
         }
+
+
+        [HttpPost("/resources")]
+        public async Task<ActionResult> AddItem([FromBody] CreateResourceItem request)
+        {
+            if(ModelState.IsValid == false) 
+            {
+                return BadRequest(ModelState);
+            }
+            //tomorrow add it to the database
+            var response = new GetResourceItem
+            {
+                Id = Guid.NewGuid().ToString(),
+                Description = request.Description,
+                Link = request.Link,
+                Type = request.Type,
+            };
+            return Ok(response);
+        }
     }
 }
