@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, concatLatestFrom } from '@ngrx/effects';
 import { ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { filter, map, tap } from 'rxjs';
+import { catchError, filter, map, of, tap } from 'rxjs';
 import { selectCounterFeature } from '..';
 import { counterDocuments, counterEvents } from '../actions/counter.action';
 import { CounterState } from '../reducers/counter.reducer';
+import { z } from 'zod';
+import { applicationEvents } from '../actions/app.actions';
 
 @Injectable()
 export class CounterEffects {
+  private readonly CountDataSchema = z.object({
+    current: z.number(),
+    by: z.union([z.literal(1), z.literal(3), z.literal(5)]),
+  });
   //this will turn counterEvents.counterEntered -> counterDocuments.counter || nothing
   loadCounterPrefs$ = createEffect(
     () => {
@@ -16,8 +22,16 @@ export class CounterEffects {
         ofType(counterEvents.counterEntered), // -> counterEntered Action
         map(() => localStorage.getItem('counter-data')), // string || null
         filter((storedStuff) => storedStuff != null), // stop here if there is nothing stored.
-        map((storedStuff) => JSON.parse(storedStuff!) as CounterState), // { count: 1, by: 3} as CounterState
-        map((payload) => counterDocuments.counter({ payload }))
+        map((storedStuff) => JSON.parse(storedStuff!)), // { count: 1, by: 3} as CounterState - need to validate (using Zod)
+        map(
+          (susObject) => this.CountDataSchema.parse(susObject) as CounterState
+        ),
+        map((payload: CounterState) => counterDocuments.counter({ payload })),
+        catchError((err) => {
+          return of(
+            applicationEvents.error({ message: 'no haxxing the localstorage' })
+          );
+        })
       );
     },
     { dispatch: true }
