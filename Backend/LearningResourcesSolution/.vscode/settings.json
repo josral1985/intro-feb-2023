@@ -1,0 +1,29 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "bookstore",
+      "database": "bookstore",
+      "username": "bond"
+    },
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 1433,
+      "driver": "MSSQL",
+      "name": "Example_DB",
+      "database": "resources_dev",
+      "username": "sa",
+      "password": "TokyoJoe138!"
+    }
+  ]
+}
